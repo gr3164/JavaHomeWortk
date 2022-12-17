@@ -3,6 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static java.util.Arrays.asList;
 import static java.util.Arrays.copyOf;
@@ -15,7 +16,9 @@ public class Main {
 //        mergeSort(arr, lngthArr);
 //        System.out.println(Arrays.toString(arr));
 
-        removeEvenNumber(arr);
+//        removeEvenNumber(arr);
+
+        minMaxMid();
     }
     /**
      * Реализовать алгоритм сортировки слиянием
@@ -63,6 +66,46 @@ public class Main {
                list.add(arr[i]);
            }
         }
+
         System.out.println(Arrays.toString(list.toArray()));
     }
+
+    /**
+     * Задан целочисленный список ArrayList. Найти минимальное, максимальное и среднее из этого списка.
+     */
+    private static void minMaxMid() {
+        int min = 0;
+        int max = 100;
+
+        int lenght =  8 + (int)(Math.random() * ((20 - 8) + 1));
+        ArrayList<Integer> list = new ArrayList<>(lenght);
+
+        for (int i =0; i < lenght; i++) {
+            int randomNumber = min + (int)(Math.random() * ((max - min) + 1));
+            list.add(randomNumber);
+        }
+
+        int maxNumber = list.get(0);
+        int minNumber = list.get(0);
+        int mean = 0;
+
+        for (int i =0; i < list.size(); i++) {
+            if (list.get(i) > maxNumber) {
+                maxNumber = list.get(i);
+            }
+            if (list.get(i) < minNumber) {
+                minNumber = list.get(i);
+            }
+            mean += list.get(i);
+        }
+
+        mean = mean/lenght;
+
+        System.out.println("Array: " + Arrays.toString(list.toArray()));
+        System.out.println("Max number: " + maxNumber);
+        System.out.println("Min number: " + minNumber);
+        System.out.println("Mean: " + mean);
+
+    }
+
 }
