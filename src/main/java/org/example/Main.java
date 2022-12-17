@@ -2,14 +2,20 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.Arrays.copyOf;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        int[] arr = {123, 1, 44, 22, 3, 4343, 2, 1, 11, 234};
+        int[] arr = {123, 1, 44, 22, 3, 4343, 2, 148, 171, 234, 7, 76};
         int lngthArr = arr.length;
-        mergeSort(arr, lngthArr);
-        System.out.println(Arrays.toString(arr));
+
+//        mergeSort(arr, lngthArr);
+//        System.out.println(Arrays.toString(arr));
+
+        removeEvenNumber(arr);
     }
     /**
      * Реализовать алгоритм сортировки слиянием
@@ -44,5 +50,19 @@ public class Main {
         while (j < rightLength) {
             src[k++] = right[j++];
         }
+    }
+
+    /**
+     * Пусть дан произвольный список целых чисел, удалить из него четные числа
+     */
+    private static void removeEvenNumber(int[] arr) {
+        List<Integer> list = new ArrayList<>(arr.length);
+
+        for (int i =0; i < arr.length; i++) {
+           if (arr[i] % 2 != 0) {
+               list.add(arr[i]);
+           }
+        }
+        System.out.println(Arrays.toString(list.toArray()));
     }
 }
